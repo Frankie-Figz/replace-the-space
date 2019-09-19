@@ -1,9 +1,17 @@
+/* body {
+  background-image: url("replacethespace.jpg");
+  background-size: auto;
+} */
+
+
+/* Blank Spaces */
 .blank {
   float: left;
   width: 40px;
   height: 40px;
   margin: 1%;
   text-align: center;
-  border: 1px solid black;
+  border: 1px solid rgb(56, 92, 255);
+  background-color: rgba(199, 0, 0, 0.603);
   visibility: hidden;
 }
