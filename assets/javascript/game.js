@@ -2,12 +2,13 @@
 var wordOptions = ["galaxy","neptune","blackhole", "moon","eclipse","asteroid","jupiter","astronaut","telescope","Mercury"];
 var alphabet = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
 var lettersGuessed = [];
+var incorrectGuesses = [];
 var wordsGuessed = [];
 
 //Assigning wins/guesses left the correct number
 var wins = 0;
 var losses = 0;
-var guessesLeft = 10;
+var guessesLeft = 1;
 var maxLength = 9;
 var hasHit = false;
 
@@ -41,30 +42,45 @@ var blankSpaceFunction = function(word) {
 
 //Valid Input Function
 var validInputFunction = function(s) {
-  return alphabet.includes(s);
+  if (lettersGuessed.length > 0){
+    if (lettersGuessed.includes(s)){
+      return false;
+    }
+  }
+  if (alphabet.includes(s)){
+    return true;
+  } 
+  else {
+    return false;
+  }
 }
 
 //Comparison Function
 var comparisonFunction = function(w) {
   //Get the letters within the string being guessed and ompare the letter to the letters in the array
+  lettersGuessed.push(w);
   for (var str = 0; str < randomWord.length; str++){
     //Print the letter in the array to the blank space, and push the user's guess to the letters guessed array. 
     if (w == randomWord[str]) {
       var letter = document.getElementById("b" + str);
       letter.textContent = w;
+      wordLength--;
       hasHit = true;
-      lettersGuessed.push(w);
     }
   }
   //If guessed letter is not in the word, -1 guesses left, push the user's guess to letters guessed array and print the wrong letters guessed for the user to see.
-  if (hasHit == false){
+  if ((hasHit == false) && (guessesLeft > 0)){
+    incorrectGuesses.push(w);
     guessesLeft--;
-    lettersGuessed.push(w);
-    letterGuessedText.textContent = "Letters Guessed: " + lettersGuessed.toString();
+    letterGuessedText.textContent = "Letters Guessed: " + incorrectGuesses.toString();
     guessRemainText.textContent = "Guesses Left: " + guessesLeft;
   }
   hasHit = false;
 }
+
+//Restart Game Function
+//reset the letters guessed.
+//send back to the random word generator.
 
 //START GAME ========================================
 
@@ -73,10 +89,12 @@ var userPlay = confirm("Do you want to play a game of Replace the Space?");
 if (userPlay == true) {
   
   //Add directions: "Press a key to begin guessing the word."
+  //
 
   //Get a random word from the Word Options array
   var randomWord = wordOptions[Math.floor(Math.random() * wordOptions.length)];
   console.log(randomWord);
+  var wordLength = randomWord.length;
   //Send the random word to the blank space function.
   blankSpaceFunction(randomWord);
   
@@ -99,21 +117,25 @@ if (userPlay == true) {
         //If valid pass for comparison to random word
         comparisonFunction(userGuessLow);
       }
+
+      //Lose Condition:
+      if (guessesLeft <= 0){
+        //function that checks on the status of the game to break the code or end the game
+        alert ("You lose.");
+        losses++;
+        loseText.textContent = "Losses: " + losses;
+        //Restart game function
+      }
       
-
-
+      //Winning Condition:
+      if (wordLength == 0) {
+        alert ("You win!");
+        wins++;
+        winText.textContent = "Wins: " + wins;
+        //Restart game function
+      }
     }
   }
-  //Lose Condition:
-  if (guessesLeft <= 0){
-    //function that checks on the status of the game to break the code or end the game
-    losses++;
-  }
-  
-  //Win Condition: 
-  //if blank spaces are filled, you win! 
-  //wins++;
-
 //If they player doesn't want to play, quit. 
 } else {
   alert("Fine. I didn't want to play with you, anyways.")
