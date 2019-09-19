@@ -1,16 +1,17 @@
 // Various arrays
-var wordOptions = ["galaxy","neptune","blackhole", "moon","eclipse","asteroid","jupiter","astronaut","telescope","Mercury"];
+var wordOptions = ["galaxy","neptune","blackhole", "moon","eclipse","asteroid","jupiter","astronaut","telescope","mercury"];
 var alphabet = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
 var lettersGuessed = [];
 var incorrectGuesses = [];
-var wordsGuessed = [];
 
 //Assigning wins/guesses left the correct number
 var wins = 0;
 var losses = 0;
-var guessesLeft = 1;
+var guessesLeft = 10;
 var maxLength = 9;
 var hasHit = false;
+var randomWord = "";
+var wordLength = 0;
 
 //Creating variables to hold the references to the place in the HTML where we want to display the results.
 var directionsText = document.getElementById ("directions");
@@ -25,18 +26,18 @@ var letterGuessedText = document.getElementById ("letterGuessedText");
 //Blank Space Function
 var blankSpaceFunction = function(word) {
   
+  //Makes blank space invisible
+  for (var h = word.length; h < maxLength; h++){
+    var space = document.getElementById("b" + h);
+    space.style.visibility = "hidden";
+    space.textContent = "";
+  }
+  
   //Makes blank space visible
   for (var v = 0; v < word.length; v++){
     var space = document.getElementById("b" + v);
     space.style.visibility = "visible";
-  }
-  
-  var blank = maxLength - word.length;
-  
-  //Makes blank space invisible
-  for (var h = blank + 1; h <= blank; h++){
-    var space = document.getElementById("b" + h);
-    space.style.visibility = "hidden";
+    space.textContent = "";
   }
 }
 
@@ -63,6 +64,7 @@ var comparisonFunction = function(w) {
     //Print the letter in the array to the blank space, and push the user's guess to the letters guessed array. 
     if (w == randomWord[str]) {
       var letter = document.getElementById("b" + str);
+      console.log(letter);
       letter.textContent = w;
       wordLength--;
       hasHit = true;
@@ -85,14 +87,30 @@ var resetArrayFunction = function (){
   incorrectGuesses = [];
 }
 
-//Restart Function
-var restartFunction = function(){
- guessesLeft = 10;
- wordLength = 0;
- letterGuessedText.textContent = "Letters Guessed: " + incorrectGuesses;
- guessRemainText.textContent = "Guesses Left: " + guessesLeft;
- var userReplay = confirm("Let's play again!")
- return userReplay;
+//Play Function
+var playFunction = function(){
+  directionsText.textContent = "";
+  randomWord = "";
+
+  //Get a random word from the Word Options array
+  randomWord = wordOptions[Math.floor(Math.random() * wordOptions.length)];
+  console.log(randomWord);
+  
+  //Send the random word to the blank space function.
+  blankSpaceFunction(randomWord);
+  
+  //Set up our initial values
+  wordLength = randomWord.length;
+  guessesLeft = 10;
+  letterGuessedText.textContent = "LETTERS GUESSED: " + incorrectGuesses;
+  guessRemainText.textContent = "GUESSES LEFT: " + guessesLeft;
+  
+  //Replay Feature
+  if (userPlay == false){
+    var userReplay = confirm("Let's play again!")
+    return userReplay;
+  }
+  
 }
 
 //START GAME ========================================
@@ -102,14 +120,10 @@ var userPlay = confirm("Do you want to play a game of Replace the Space?");
 if ((userPlay == true) || (userReplay == true)) {
   
   directionsText.textContent = "Press any key to start replacing the spaces.";
-
-  //Get a random word from the Word Options array
-  var randomWord = wordOptions[Math.floor(Math.random() * wordOptions.length)];
-  console.log(randomWord);
-  var wordLength = randomWord.length;
-  //Send the random word to the blank space function.
-  blankSpaceFunction(randomWord);
   
+  //Initializes our values for play and replay.
+  playFunction();
+  userPlay = false;
   //Continue Guessing Condition:
   if (guessesLeft > 0) {
     
@@ -133,20 +147,20 @@ if ((userPlay == true) || (userReplay == true)) {
       //Lose Condition:
       if (guessesLeft <= 0){
         //function that checks on the status of the game to break the code or end the game
-        alert ("You lose.");
         losses++;
-        loseText.textContent = "Losses: " + losses;
+        loseText.textContent = "LOSSES: " + losses;
+        alert ("You lose.");
         resetArrayFunction();
-        restartFunction();
+        playFunction();
       }
       
       //Winning Condition:
       if (wordLength == 0) {
-        alert ("You win!");
         wins++;
-        winText.textContent = "Wins: " + wins;
+        winText.textContent = "WINS: " + wins;
+        alert ("You win!");
         resetArrayFunction();
-        restartFunction();
+        playFunction();
       }
     }
   }
