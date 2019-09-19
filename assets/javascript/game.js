@@ -13,7 +13,7 @@ var maxLength = 9;
 var hasHit = false;
 
 //Creating variables to hold the references to the place in the HTML where we want to display the results.
-var directions = document.getElementById ("directions");
+var directionsText = document.getElementById ("directions");
 var wordGuessed = document.getElementById ("wordGuessed");
 var winText = document.getElementById ("winText");
 var loseText = document.getElementById ("loseText");
@@ -78,18 +78,30 @@ var comparisonFunction = function(w) {
   hasHit = false;
 }
 
-//Restart Game Function
-//reset the letters guessed.
-//send back to the random word generator.
+//Reset Array Function
+var resetArrayFunction = function (){
+  alphabet = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
+  lettersGuessed = [];
+  incorrectGuesses = [];
+}
+
+//Restart Function
+var restartFunction = function(){
+ guessesLeft = 10;
+ wordLength = 0;
+ letterGuessedText.textContent = "Letters Guessed: " + incorrectGuesses;
+ guessRemainText.textContent = "Guesses Left: " + guessesLeft;
+ var userReplay = confirm("Let's play again!")
+ return userReplay;
+}
 
 //START GAME ========================================
 
 //Asks the player if they want to play the game.
 var userPlay = confirm("Do you want to play a game of Replace the Space?");
-if (userPlay == true) {
+if ((userPlay == true) || (userReplay == true)) {
   
-  //Add directions: "Press a key to begin guessing the word."
-  //
+  directionsText.textContent = "Press any key to start replacing the spaces.";
 
   //Get a random word from the Word Options array
   var randomWord = wordOptions[Math.floor(Math.random() * wordOptions.length)];
@@ -124,7 +136,8 @@ if (userPlay == true) {
         alert ("You lose.");
         losses++;
         loseText.textContent = "Losses: " + losses;
-        //Restart game function
+        resetArrayFunction();
+        restartFunction();
       }
       
       //Winning Condition:
@@ -132,7 +145,8 @@ if (userPlay == true) {
         alert ("You win!");
         wins++;
         winText.textContent = "Wins: " + wins;
-        //Restart game function
+        resetArrayFunction();
+        restartFunction();
       }
     }
   }
