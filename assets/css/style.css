@@ -7,11 +7,20 @@
 /* Blank Spaces */
 .blank {
   float: left;
-  width: 40px;
-  height: 40px;
+  width: 50px;
+  height: 50px;
   margin: 1%;
   text-align: center;
   border: 1px solid rgb(56, 92, 255);
   background-color: rgba(199, 0, 0, 0.603);
   visibility: hidden;
+}
+
+#stats {
+  width: auto;
+  padding: 1%;
+  margin: 1%;
+  text-align: center;
+  border: 1px solid rgb(56, 92, 255);
+  /* background-color: rgba(199, 0, 0, 0.603); */
 }
