@@ -1,5 +1,5 @@
 body {
-  background-image: url("replacethespace.jpg");
+  background-image: url("../images/replacethespace.jpg");
   background-size: cover;
   background-repeat: no-repeat;
 }
@@ -27,6 +27,14 @@ div.jumbotron {
   vertical-align: middle;
 }
 
+#directions {
+  float: left;
+  text-align: left;
+  color: white;
+  font-family: 'Orbitron', sans-serif;
+  text-transform: uppercase;
+}
+
 #b0 {
   margin-left: 5%;
 }
@@ -40,9 +48,37 @@ div.jumbotron {
   font-family: 'Orbitron', sans-serif;
 }
 
+div.btn-container{
+  text-align: center;
+}
+
+.btn {
+  background-color: rgb(199, 0, 0);
+  border-color: white;
+}
+
+/* unvisited link */
+button.btn:link {
+  color: rgb(199, 0, 0);
+}
+
+/* visited link */
+button.btn:visited {
+  color: rgb(199, 0, 0);
+}
+
+/* mouse over link */
+button.btn:hover {
+  color: white;
+}
+
+/* selected link */
+button.btn:active {
+  color: rgb(199, 0, 0);
+}
 @media screen and (max-width: 1024px) {
   body{
-    background-image: url("replacethespace_vertical.jpg");
+    background-image: url("../images/replacethespace_vertical.jpg");
   }
   div.blank {
     width: 30px;
