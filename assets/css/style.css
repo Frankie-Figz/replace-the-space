@@ -27,16 +27,17 @@ div.jumbotron {
   vertical-align: middle;
 }
 
-#directions {
-  float: left;
+div#directions {
+  padding-left: 5%;
   text-align: left;
   color: white;
   font-family: 'Orbitron', sans-serif;
   text-transform: uppercase;
 }
 
-#b0 {
-  margin-left: 5%;
+.modal {
+  font-family: 'Orbitron', sans-serif;
+  text-transform: uppercase;
 }
 
 #stats {
@@ -55,6 +56,7 @@ div.btn-container{
 .btn {
   background-color: rgb(199, 0, 0);
   border-color: white;
+  font-family: 'Orbitron', sans-serif;
 }
 
 /* unvisited link */

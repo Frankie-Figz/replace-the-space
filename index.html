@@ -21,18 +21,15 @@
 
   <body>
     <!-- Modal -->
-    <div class="modal fade" id="modal" tabindex="-1" role="dialog">
+    <div class="modal fade" id="modal staticBackdrop" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 id="modal-title"></h5>
+            <h5 id="modal-title staticBackdropLabel"></h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <!-- <div class="modal-body">
-            <p>Modal body text goes here.</p>
-          </div> -->
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             <button type="button" class="btn btn-primary" id="play-again">Play Again</button>
@@ -40,11 +37,29 @@
         </div>
       </div>
     </div>
+    
+    <!-- Static Backdrop Modal (NOT WORKING) -->    
+    <!-- <div class="modal fade" id="modal staticBackdrop" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 id="modal-title staticBackdropLabel"></h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary" id="play-again">Play Again</button>
+          </div>
+        </div>
+      </div>
+    </div> -->
+
     <div class="jumbotron jumbotron-fluid">
+      <div id="directions"></div>
       <div class="container">
         
-        <div id="directions"></div>
-
         <div class="blanks">
           <div id="b0" class="blank"></div>
           <div id="b1" class="blank"></div>
@@ -62,14 +77,14 @@
           <div id="wordGuessed"></div>
           <div id="winText">WINS: 0</div>
           <div id="loseText">LOSSES: 0</div>
-          <div id="guessRemainText">GUESSES LEFT: 10</div>
+          <div id="guessRemainText">GUESSES LEFT: 5</div>
           <div id="letterGuessedText">LETTERS GUESSED: </div>
         </div>
       </div>
     </div> 
 
     <div class="btn-container">
-      <button class="btn btn-primary" id="play">Play</button>
+      <button class="btn btn-primary" id="play">PLAY</button>
     </div>
 
     <!-- Link to jQuery CDN -->
