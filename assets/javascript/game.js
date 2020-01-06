@@ -10,7 +10,7 @@ var incorrectGuesses = [];
 // ===================================================================
 var wins = 0;
 var losses = 0;
-var guessesLeft = 1;
+var guessesLeft = 5;
 var maxLength = 9;
 var hasHit = false;
 var randomWord = "";
@@ -73,7 +73,6 @@ var comparisonFunction = function(w) {
     //Print the letter in the array to the blank space, and push the user's guess to the letters guessed array. 
     if (w == randomWord[str]) {
       var letter = document.getElementById("b" + str);
-      console.log(letter);
       letter.textContent = w;
       wordLength--;
       hasHit = true;
@@ -110,11 +109,11 @@ var playFunction = function(){
   
   // Set up our initial values
   wordLength = randomWord.length;
-  guessesLeft = 1;
+  guessesLeft = 5;
   letterGuessedText.textContent = "LETTERS GUESSED: " + incorrectGuesses;
   guessRemainText.textContent = "GUESSES LEFT: " + guessesLeft;
   
-  // Replay Feature
+  // Replay
   if (userPlay == false){
     return userReplay;
   };
@@ -140,7 +139,7 @@ document.addEventListener('click', function (event) {
 // ===================================================================
 // GAME
 // ===================================================================
-directionsText.textContent = "PRESS PLAY TO BEGIN";
+directionsText.textContent = "Press play to begin";
 var game = function() { 
   if ((userPlay == true) || (userReplay == true)) {
     
@@ -164,21 +163,23 @@ var game = function() {
         if (validInput == true){
           // If valid pass for comparison to random word
           comparisonFunction(userGuessLow);
-        }
+        };
 
         //Lose Condition:
         if (guessesLeft <= 0){
           losses++;
           loseText.textContent = "LOSSES: " + losses;
-          modalTitle.textContent = "You guessed incorrectly. The correct answer was " + randomWord + ".";
+          modalTitle.textContent = "You lose. The answer was " + randomWord + ".";
+          console.log(modalTitle);
           $('#modal').modal('show');
-        }
+        };
         
         // Win Condition:
         if (wordLength == 0) {
           wins++;
           winText.textContent = "WINS: " + wins;
           modalTitle.textContent = "You win!";
+          console.log(modalTitle);
           $('#modal').modal('show');
         };
       };
