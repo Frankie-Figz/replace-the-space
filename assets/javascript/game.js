@@ -17,6 +17,7 @@ var randomWord = "";
 var wordLength = 0;
 var userPlay;
 var userReplay;
+var gameOver;
 // ===================================================================
 // HTML ELEMENT VARIABLES
 // ===================================================================
@@ -99,6 +100,7 @@ var resetArrayFunction = function (){
 var initialize = function(){
   directionsText.textContent = "";
   randomWord = "";
+  gameOver = false;
 
   // Get a random word from the Word Options array
   randomWord = wordOptions[Math.floor(Math.random() * wordOptions.length)];
@@ -176,8 +178,9 @@ var game = function() {
         };
 
         // Lose Condition:
-        if (guessesLeft <= 0){
+        if (guessesLeft <= 0 && gameOver == false){
           losses++;
+          gameOver = true;
           loseText.textContent = "LOSSES: " + losses;
           modalTitle.textContent = "You lose. The answer was " + randomWord + ".";
           console.log(modalTitle);
