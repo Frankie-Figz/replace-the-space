@@ -104,7 +104,6 @@ var initialize = function(){
 
   // Get a random word from the Word Options array
   randomWord = wordOptions[Math.floor(Math.random() * wordOptions.length)];
-  console.log(randomWord);
   
   // Send the random word to the blank space function.
   blankSpaceFunction(randomWord);
@@ -183,7 +182,6 @@ var game = function() {
           gameOver = true;
           loseText.textContent = "LOSSES: " + losses;
           modalTitle.textContent = "You lose. The answer was " + randomWord + ".";
-          console.log(modalTitle);
           $('#modal').modal({visibility: 'show', backdrop: 'static', keyboard: false});
         };
         
@@ -192,7 +190,6 @@ var game = function() {
           wins++;
           winText.textContent = "WINS: " + wins;
           modalTitle.textContent = "You win!";
-          console.log(modalTitle);
           $('#modal').modal({visibility: 'show', backdrop: 'static', keyboard: false});
         };
       };
