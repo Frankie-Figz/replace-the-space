@@ -165,7 +165,7 @@ var game = function() {
           comparisonFunction(userGuessLow);
         };
 
-        //Lose Condition:
+        // Lose Condition:
         if (guessesLeft <= 0){
           losses++;
           loseText.textContent = "LOSSES: " + losses;
