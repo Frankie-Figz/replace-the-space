@@ -35,14 +35,14 @@ var modalTitle = document.getElementById("modal-title");
 // Blank Space Function
 var blankSpaceFunction = function(word) {
   
-  //Makes blank space invisible
+  // Makes blank space invisible
   for (var h = word.length; h < maxLength; h++){
     var space = document.getElementById("b" + h);
     space.style.visibility = "hidden";
     space.textContent = "";
   };
   
-  //Makes blank space visible
+  // Makes blank space visible
   for (var v = 0; v < word.length; v++){
     var space = document.getElementById("b" + v);
     space.style.visibility = "visible";
@@ -50,7 +50,7 @@ var blankSpaceFunction = function(word) {
   };
 };
 // ===================================================================
-//Valid Input Function
+// Valid Input Function
 var validInputFunction = function(s) {
   if (lettersGuessed.length > 0){
     if (lettersGuessed.includes(s)){
@@ -65,9 +65,9 @@ var validInputFunction = function(s) {
   };
 };
 // ===================================================================
-//Comparison Function
+// Comparison Function
 var comparisonFunction = function(w) {
-  //Get the letters within the string being guessed and compares the letter to the letters in the array
+  // Get the letters within the string being guessed and compares the letter to the letters in the array
   lettersGuessed.push(w);
   for (var str = 0; str < randomWord.length; str++){
     //Print the letter in the array to the blank space, and push the user's guess to the letters guessed array. 
@@ -78,7 +78,7 @@ var comparisonFunction = function(w) {
       hasHit = true;
     };
   };
-  //If guessed letter is not in the word, -1 guesses left, push the user's guess to letters guessed array and print the wrong letters guessed for the user to see.
+  // If guessed letter is not in the word, -1 guesses left, push the user's guess to letters guessed array and print the wrong letters guessed for the user to see.
   if ((hasHit == false) && (guessesLeft > 0)){
     incorrectGuesses.push(w);
     guessesLeft--;
@@ -88,7 +88,7 @@ var comparisonFunction = function(w) {
   hasHit = false;
 };
 // ===================================================================
-//Reset Array Function
+// Reset Array Function
 var resetArrayFunction = function (){
   alphabet = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
   lettersGuessed = [];
@@ -171,7 +171,7 @@ var game = function() {
           loseText.textContent = "LOSSES: " + losses;
           modalTitle.textContent = "You lose. The answer was " + randomWord + ".";
           console.log(modalTitle);
-          $('#modal').modal('show');
+          $('#modal').modal({visibility: 'show', backdrop: 'static', keyboard: false});
         };
         
         // Win Condition:
@@ -180,7 +180,7 @@ var game = function() {
           winText.textContent = "WINS: " + wins;
           modalTitle.textContent = "You win!";
           console.log(modalTitle);
-          $('#modal').modal('show');
+          $('#modal').modal({visibility: 'show', backdrop: 'static', keyboard: false});
         };
       };
     };
