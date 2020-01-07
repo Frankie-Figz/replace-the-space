@@ -70,7 +70,7 @@ var comparisonFunction = function(w) {
   // Get the letters within the string being guessed and compares the letter to the letters in the array
   lettersGuessed.push(w);
   for (var str = 0; str < randomWord.length; str++){
-    //Print the letter in the array to the blank space, and push the user's guess to the letters guessed array. 
+    // Print the letter in the array to the blank space, and push the user's guess to the letters guessed array. 
     if (w == randomWord[str]) {
       var letter = document.getElementById("b" + str);
       letter.textContent = w;
@@ -96,7 +96,7 @@ var resetArrayFunction = function (){
 };
 // ===================================================================
 // Play Function
-var playFunction = function(){
+var initialize = function(){
   directionsText.textContent = "";
   randomWord = "";
 
@@ -134,7 +134,17 @@ document.addEventListener('click', function (event) {
   $('#modal').modal('hide');
   userReplay = true;
   resetArrayFunction();
-  playFunction();
+  initialize();
+});
+// ===================================================================
+// Exit Button Click Function
+document.addEventListener('click', function (event) {
+  if (!event.target.matches('#exit-game')) return;
+  userReplay = false;
+  resetArrayFunction();
+  directionsText.textContent = "";
+  randomWord = "";
+  modalTitle.textContent = "Thanks for playing.";
 });
 // ===================================================================
 // GAME
@@ -144,7 +154,7 @@ var game = function() {
   if ((userPlay == true) || (userReplay == true)) {
     
     // Initializes our values for play and replay.
-    playFunction();
+    initialize();
     userPlay = false;
     // Continue Guessing Condition:
     if (guessesLeft > 0) {
