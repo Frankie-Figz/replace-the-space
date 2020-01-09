@@ -41,9 +41,8 @@
     <div class="jumbotron jumbotron-fluid">
       <div id="directions"></div>
       <div class="container">
-        
-        <div class="row"> 
-          <div class="blanks col-md-12 col-lg-6">
+
+          <div class="blanks row">
             <div id="b0" class="blank"></div>
             <div id="b1" class="blank"></div>
             <div id="b2" class="blank"></div>
@@ -56,21 +55,18 @@
             <div id="b9" class="blank"></div>
           </div>
 
-          <div id="stats" class="col-md-12 col-lg-4">
-            <div id="wordGuessed"></div>
-            <div id="winText">WINS: 0</div>
-            <div id="loseText">LOSSES: 0</div>
-            <div id="guessRemainText">GUESSES LEFT: 5</div>
-            <div id="letterGuessedText">LETTERS GUESSED: </div>
+          <div id="stats">
+            <div class="row" id="wordGuessed"></div>
+            <div class="row" id="winText">WINS : 0</div>
+            <div class="row" id="loseText">LOSSES : 0</div>
+            <div class="row" id="guessRemainText">GUESSES LEFT : </div>
+            <div class="row" id="letterGuessedText">LETTERS GUESSED : </div>
           </div>
-
-        </div>
-       </div>
       </div>
     </div> 
 
     <div class="btn-container">
-      <button class="btn btn-primary" id="play">PLAY</button>
+      <button class="btn btn-secondary" id="play">PLAY</button>
     </div>
 
     <!-- Link to jQuery CDN -->

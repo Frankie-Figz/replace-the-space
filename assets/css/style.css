@@ -7,6 +7,7 @@ body {
 div.jumbotron {
   background-color: rgba(199, 0, 0, 0.75);
   border-bottom: 1px solid white;
+  text-align: center;
 }
 
 /* Blank Spaces */
@@ -24,7 +25,7 @@ div.jumbotron {
   font-family: 'Orbitron', sans-serif;
   text-transform: uppercase;
   line-height: 50px; 
-  vertical-align: middle;
+  vertical-align: top;
 }
 
 div#directions {
@@ -78,6 +79,7 @@ button.btn:hover {
 button.btn:active {
   color: rgb(199, 0, 0);
 }
+
 @media screen and (max-width: 1024px) {
   body{
     background-image: url("../images/replacethespace_vertical.jpg");
@@ -90,5 +92,8 @@ button.btn:active {
     line-height: 30px;
     vertical-align: center;
     text-align: right;
+  }
+  .blank {
+    line-height: 30px;
   }
 }

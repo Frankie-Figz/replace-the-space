@@ -35,50 +35,19 @@ var modalTitle = document.getElementById("modal-title");
 // ===================================================================
 // Blank Space Function
 var blankSpaceFunction = function(word) {
-  // New logic
-  // Iterates through all the possible spaces. 
   for(var i = 0; i < maxLength; i++){
     var space = document.getElementById("b" + i);
     space.textContent = "";
     space.style.visibility = (i < word.length ? "visible" : "hidden");
   }
-
-  // Old logic
-  // Makes blank space invisible
-  // for (var h = word.length; h < maxLength; h++){
-  //   var space = document.getElementById("b" + h);
-  //   space.style.visibility = "hidden";
-  //   space.textContent = "";
-  // };
-  
-  // // Makes blank space visible
-  // for (var v = 0; v < word.length; v++){
-  //   var space = document.getElementById("b" + v);
-  //   space.style.visibility = "visible";
-  //   space.textContent = "";
-  // };
 };
 // ===================================================================
 // Valid Input Function
 var validInputFunction = function(s) {
-  // New logic ::
-  // The key pressed should be included in the alphabet AND must NOT be included in the guessed list to be a valid input.
   if(alphabet.includes(s) && !lettersGuessed.includes(s))
     return true
   else
     return false
-  // Old logic : First check if the key pressed is in the guessed. 
-  // Second check if the key pressed is valid; if it is not valid return false else return true.
-  // if (lettersGuessed.length > 0 && lettersGuessed.includes(s)){
-  //     return false;
-  // }
-  // else if (alphabet.includes(s)){
-  //   return true;
-  // } 
-  // else {
-  //   return false;
-  // };
-
 };
 // ===================================================================
 // Comparison Function
@@ -103,13 +72,6 @@ var comparisonFunction = function(w) {
   };
   hasHit = false;
 };
-// ===================================================================
-// Reset Array Function
-// var resetArrayFunction = function (){
-//   alphabet = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
-//   lettersGuessed = [];
-//   incorrectGuesses = [];
-// };
 // ===================================================================
 // Play Function
 var initialize = function(){
@@ -151,7 +113,6 @@ document.addEventListener('click', function (event) {
   if (!event.target.matches('#play-again')) return;
   $('#modal').modal('hide');
   userReplay = true;
-  // resetArrayFunction();
   initialize();
 });
 // ===================================================================
@@ -159,11 +120,9 @@ document.addEventListener('click', function (event) {
 document.addEventListener('click', function (event) {
   if (!event.target.matches('#exit-game')) return;
   userReplay = false;
-  // resetArrayFunction();
   directionsText.textContent = "";
   randomWord = "";
   modalTitle.textContent = "Thanks for playing.";
-  // Hides the play again and exit game button from user
   document.getElementById("play-again").style.visibility = "hidden";
   document.getElementById("exit-game").style.visibility = "hidden";
 });
@@ -182,18 +141,15 @@ var game = function() {
       
       // User presses a key:
       document.onkeyup = function(event) {
-        var userGuess = event.key;
-        
-        // Changes the users guess to lower case
-        var userGuessLow = userGuess.toLowerCase();
+        var userGuess = event.key.toLowerCase();
         
         // Check if key pressed is valid
-        var validInput = validInputFunction(userGuessLow);
+        var validInput = validInputFunction(userGuess);
         
         // Validity Condition
         if (validInput == true){
           // If valid pass for comparison to random word
-          comparisonFunction(userGuessLow);
+          comparisonFunction(userGuess);
         };
 
         // Lose Condition:
