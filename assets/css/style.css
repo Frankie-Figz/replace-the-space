@@ -20,7 +20,7 @@ div.jumbotron {
   text-align: center;
   border: 1px solid white;
   background-color: rgb(0, 95, 133);
-  visibility: hidden;
+  visibility: visible;
   color: white;
   font-family: 'Orbitron', sans-serif;
   text-transform: uppercase;
