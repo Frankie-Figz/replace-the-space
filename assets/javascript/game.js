@@ -35,12 +35,17 @@ var modalTitle = document.getElementById("modal-title");
 // ===================================================================
 // Blank Space Function
 var blankSpaceFunction = function(word) {
-  for(var i = 0; i < maxLength; i++){
-    var space = document.getElementById("b" + i);
-    space.textContent = "";
-    space.style.visibility = (i < word.length ? "visible" : "hidden");
+  // New logic
+  // Iterates through all the possible spaces.   var blanks = document.getElementById("blanks");
+  blanks.innerHTML = "";  
+  for(var i in word){
+    var newBlank = document.createElement("div");
+    newBlank.innerText = "";
+    newBlank.id = "b"+i;
+    newBlank.className = "blank";
+    blanks.append(newBlank);
   }
-};
+}
 // ===================================================================
 // Valid Input Function
 var validInputFunction = function(s) {
