@@ -11,11 +11,8 @@
   * javascript
     * game.js
 
-##### Instructions to Run the App
-* Hosted on Github here: https://emmastotz.github.io/replace-the-space/
-
-* OR clone the file from github. (https://github.com/emmastotz/replace-the-space)
-* Run the application in your IDE to see the magic.
+##### Run the App
+* Let's go to space : https://frankie-figz.github.io/replace-the-space/
 
 ##### Technologies Used
 * CSS3
@@ -23,4 +20,4 @@
 * JavaScript
 * HTML5
 
-This app was created by Emma Stotz
+This app was created in collaboration with Emma Stotz (https://github.com/emmastotz); the background design and styling were all their work. The logic work for playing the game was a joint venture.
